@@ -3,11 +3,10 @@ def linear_search(arr, target):
         if arr[i] == target:
             c = i + 1
             case ="Best Case 0(1)" if c == 1 else "Worst Case O(n)" if c == len(arr) else "Average Case O(n)"
-            return f"Element found at index {i} comparisons ({c}) \n{case}"
+            return f"Element found at index {i} \nComparisons {c} \n{case}"
     return "Element not found in the array."
 
 # Example usage
 arr = [5, 3, 2, 8, 1]
-target = int(input("Enter the target element: "))
-result = linear_search(arr, target)
+result = linear_search(arr, int(input("Enter the target element: ")))
 print(result)
