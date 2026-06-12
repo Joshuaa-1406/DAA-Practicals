@@ -7,6 +7,7 @@ def linear_search(arr, target):
     return "Element not found in the array."
 
 # Example usage
-arr = [5, 3, 2, 8, 1]
+arr = [23, 34, 3, 4, 45,1]
+# arr = list(map(int,input("Enter the number separated by comma:").split()))
 result = linear_search(arr, int(input("Enter the target element: ")))
 print(result)
