@@ -4,8 +4,8 @@ def binary_search(arr, target):
         mid = (low + high) // 2
         c += 1
         if arr[mid] == target:
-            msg = "Best case O(1)" if c == 1 else "Average case O(log n)"
-            print(f"Found at index {mid}; comparisons: {c}; {msg}")
+            case = "Best case O(1)" if c == 1 else "Average case O(log n)"
+            print(f"Found at index {mid} \ncomparisons: {c} \n{case}")
             return mid
         elif arr[mid] < target:
             low = mid + 1
