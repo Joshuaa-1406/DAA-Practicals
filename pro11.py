@@ -1,33 +1,18 @@
-def find(parent, i):
-    if parent[i]!=i:
-        parent[i] = find(parent, parent[i])
-    return parent[i]
+def find(p, i):
+    while p[i] != i: i = p[i]
+    return i
 
-def union(parent, rank, x, y):
-    if rank[x] < rank[y]:
-        parent[x] = y
-    elif rank[x] > rank[y]:
-        parent[y] = x
-    else:
-        parent[y] = x
-        rank[x] += 1    
+def kruskal(n, edges):
+    p = list(range(n))
+    mst = []
+    for u, v, w in sorted(edges, key=lambda x: x[2]):
+        a, b = find(p, u), find(p, v)
+        if a != b:
+            p[a] = b
+            mst.append((u, v, w))
+    return mst
 
-def kruskal(v, edges):
-    edges.sort(key=lambda x: x[2])
-    parent,rank = [i for i in range(v)], [0] * v
-    print("Edge : Weight")
-    for u,v,w in edges:
-        x,y = find(parent, u), find(parent, v)
-        if x != y:
-            union(parent, rank, x, y)
-            print(f"{u} - {v} : {w}")
-    print("ETC: O(E log E)")
-
-edges = [
-    (0, 1, 2),
-    (0, 3, 6),
-    (1, 2, 3),
-    (1, 3, 8),
-    (1, 4, 5)
-]
-kruskal(5, edges)
+edges = [(0,1,10), (0,2,6), (0,3,5), (1,3,15), (2,3,4)]
+print("edges : weight")
+for u, v, w in kruskal(4, edges):
+    print(f"{u} - {v} : {w}")
